@@ -7,7 +7,13 @@ def rle(text):
         if i == 0: continue
         if lis[i] == lis[i - 1]:
             k = k + 1
-        if (lis[i] != lis[i - 1]) or (i == (len(lis)-1)):
-            n.append(str(lis[i-1]) + str(k))
+        if lis[i] != lis[i - 1]:
+            if k == 1:
+                n.append(str(lis[i-1]))
+            else: n.append(str(k) + str(lis[i-1]))
             k = 1
+        if i==(len(lis)-1):
+            if k == 1:
+                n.append(str(lis[i]))
+            else: n.append(str(k) + str(lis[i]))
     return ''.join(n)

@@ -1,13 +1,16 @@
-def binre(text, serch):
-    '''text - текст, а котором производится поиск; search - сам предме поиска
-    функция выводит начало и конец совпадения в бинарном виде. если совпадений нет - пустой список'''
-    import re
-    f = []
-    text = ' '.join(format(ord(x), 'b') for x in str(text))
-    serch = ' '.join(format(ord(x), 'b') for x in str(serch))
-    for match in re.finditer(serch, text):
-        s = match.start()
-        e = match.end()
-        f.append(str(s) + '-' + str(e))
-    return f
+def binserch(arr, a):
+    '''a-искомое число; arr- отсортированный массив
+    если искомое число не найдено - None'''
+    mid = len(arr) // 2
+    min = 0
+    max = len(arr) - 1
 
+    while (arr[mid] != a) and (min <= max):
+        if a > arr[mid]:
+            min = mid + 1
+        else:
+            max = mid - 1
+        mid = (min + max) //2
+
+    if min > max: return None
+    else: return mid+1
